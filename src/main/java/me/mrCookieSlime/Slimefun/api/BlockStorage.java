@@ -66,12 +66,12 @@ public class BlockStorage {
 
     @Nullable
     public static BlockStorage getStorage(@Nonnull World world) {
-        return Slimefun.getRegistry().getWorlds().get(world.getName());
+        return Slimefun.getRegistry().getWorlds().get(world.getUID());
     }
 
     @Nonnull
     public static BlockStorage getOrCreate(@Nonnull World world) {
-        BlockStorage storage = Slimefun.getRegistry().getWorlds().get(world.getName());
+        BlockStorage storage = Slimefun.getRegistry().getWorlds().get(world.getUID());
 
         if (storage == null) {
             return new BlockStorage(world);
@@ -113,7 +113,7 @@ public class BlockStorage {
             throw new IllegalArgumentException("Slimefun cannot deal with World names that contain a dot: " + w.getName());
         }
 
-        if (Slimefun.getRegistry().getWorlds().containsKey(w.getName())) {
+        if (Slimefun.getRegistry().getWorlds().containsKey(w.getUID())) {
             // Cancel the loading process if the world was already loaded
             return;
         }
@@ -132,7 +132,7 @@ public class BlockStorage {
         loadChunks();
         loadInventories();
 
-        Slimefun.getRegistry().getWorlds().put(world.getName(), this);
+        Slimefun.getRegistry().getWorlds().put(world.getUID(), this);
     }
 
     private void loadBlocks(File directory) {
@@ -748,7 +748,7 @@ public class BlockStorage {
     }
 
     public static boolean isWorldLoaded(@Nonnull World world) {
-        return Slimefun.getRegistry().getWorlds().containsKey(world.getName());
+        return Slimefun.getRegistry().getWorlds().containsKey(world.getUID());
     }
 
     public BlockMenu loadInventory(Location l, BlockMenuPreset preset) {
