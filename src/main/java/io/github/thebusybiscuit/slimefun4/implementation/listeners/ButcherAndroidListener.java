@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -83,6 +84,10 @@ public class ButcherAndroidListener implements Listener {
 
         if (entityType == EntityType.WITHER_SKELETON && random.nextInt(250) < 2) {
             drops.add(new ItemStack(Material.WITHER_SKELETON_SKULL));
+        }
+
+        if (entityType == EntityType.IRON_GOLEM && random.nextInt(16) == 0) {
+            drops.add(SlimefunItems.BASIC_CIRCUIT_BOARD.clone());
         }
 
         if (entityType == EntityType.BLAZE) {
