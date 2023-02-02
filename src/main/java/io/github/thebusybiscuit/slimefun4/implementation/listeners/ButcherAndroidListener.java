@@ -82,11 +82,11 @@ public class ButcherAndroidListener implements Listener {
     private void addExtraDrops(List<ItemStack> drops, EntityType entityType) {
         Random random = ThreadLocalRandom.current();
 
-        if (entityType == EntityType.WITHER_SKELETON && random.nextInt(250) < 2) {
+        if (entityType == EntityType.WITHER_SKELETON && random.nextInt(40) == 0) {
             drops.add(new ItemStack(Material.WITHER_SKELETON_SKULL));
         }
 
-        if (entityType == EntityType.IRON_GOLEM && random.nextInt(16) == 0) {
+        if (entityType == EntityType.IRON_GOLEM && random.nextInt(4) == 0) {
             drops.add(SlimefunItems.BASIC_CIRCUIT_BOARD.clone());
         }
 
